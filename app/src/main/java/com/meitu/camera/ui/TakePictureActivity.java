@@ -1,9 +1,9 @@
 package com.meitu.camera.ui;
 
+import android.app.Activity;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
-import  android.app.Activity;
 import android.widget.ImageView;
 
 import meitu.imgjnidemo.R;
@@ -15,8 +15,9 @@ public class TakePictureActivity extends Activity {
         System.loadLibrary("imageToGray");
     }
 
-    public native int[] imgToGray(int[] buf, int w, int h);
     private ImageView imageView;
+
+    public native int[] imgToGray(int[] buf, int w, int h);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,11 +29,11 @@ public class TakePictureActivity extends Activity {
 
     }
 
-    private void findViews(){
+    private void findViews() {
         imageView = (ImageView) findViewById(R.id.imageView);
     }
 
-    private void exaggerateImageViewFromJNI(){
+    private void exaggerateImageViewFromJNI() {
         Bitmap img1 = ((BitmapDrawable) getResources().getDrawable(R.drawable.logo)).getBitmap();
         int w = img1.getWidth(), h = img1.getHeight();
         int[] pix = new int[w * h];
